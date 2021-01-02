@@ -1,12 +1,11 @@
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-      latitude: String,
-      longitude: String,
-parentdeviceid: String,
-available: Boolean,
-type : String,
-classname : String
+      email: String,
+      username: String,
+password: String,
+phonenumber: String,
+address : String
 
     },
     { timestamps: true }
@@ -18,6 +17,6 @@ classname : String
     return object;
   });
 
-  const Tutorial = mongoose.model("blog", schema);
+  const Tutorial = mongoose.model("spottroupusers", schema);
   return Tutorial;
 };

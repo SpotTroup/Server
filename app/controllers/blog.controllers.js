@@ -1,5 +1,5 @@
 const db = require("../blogmodel");
-const Blog = db.blog;
+const Blog = db.blogs;
 
 // Create and Save a new Blog
 exports.create = (req, res) => {
@@ -13,7 +13,7 @@ exports.create = (req, res) => {
 parentdeviceid: req.body.parentdeviceid,
 available: req.body.available,
 type : req.body.type,
-class : req.body.class
+classname : req.body.classname
   });
 
   // Save Blog in the database
@@ -67,6 +67,23 @@ exports.findOne = (req, res) => {
 exports.findbyavailable = (req, res) => {
   const available = req.params.available;
  Blog.find({ email: available })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+
+
+};
+
+// findby parentdevice id
+exports.findbyparentdeviceid = (req, res) => {
+  const parentdeviceid = req.params.parentdeviceid;
+ Blog.find({ parentdeviceid: parentdeviceid })
     .then(data => {
       res.send(data);
     })

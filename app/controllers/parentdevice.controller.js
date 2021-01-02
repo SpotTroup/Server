@@ -10,9 +10,9 @@ exports.create = (req, res) => {
   const parentdevice = new Parentdevice({
     latitude: req.body.latitude,
     longitude: req.body.longitude,
-areaname: req.body.parentdeviceid,
-blognumber: req.body.available,
-totalavailable : req.body.type
+areaname: req.body.areaname,
+blognumber: req.body.blognumber,
+totalavailable : req.body.totalavailable
 
     
   });

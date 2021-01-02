@@ -25,7 +25,7 @@ const { requireAuth } = require('../middleware/authMiddleware');
 
   router.post("/blog/", blog.create);
   //finde by email
-  //router.get("/byemail/:email", blog.findbyemail);
+  router.get("/findbyparentdeviceid/:parentdeviceid", blog.findbyparentdeviceid);
   // Retrieve all Tutorials
   router.get("/blog/", blog.findAll);
   // Retrieve all published Tutorials
