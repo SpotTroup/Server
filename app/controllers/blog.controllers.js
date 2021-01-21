@@ -10,10 +10,12 @@ exports.create = (req, res) => {
   const blog = new Blog({
     latitude: req.body.latitude,
       longitude: req.body.longitude,
+      ownerid: req.body.ownerid,
 parentdeviceid: req.body.parentdeviceid,
 available: req.body.available,
 type : req.body.type,
-classname : req.body.classname
+classname : req.body.classname,
+active : req.body.active
   });
 
   // Save Blog in the database

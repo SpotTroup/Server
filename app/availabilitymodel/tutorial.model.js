@@ -1,13 +1,13 @@
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-      latitude: String,
+      User: String,
       longitude: String,
       ownerid : String,
 parentdeviceid: String,
 available: Boolean,
 type : String,
-classname : String,
+parkingtime : String,
 active: Boolean,
 
 
@@ -21,6 +21,6 @@ active: Boolean,
     return object;
   });
 
-  const Tutorial = mongoose.model("blog", schema);
+  const Tutorial = mongoose.model("availability", schema);
   return Tutorial;
 };
