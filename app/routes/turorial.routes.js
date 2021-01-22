@@ -24,7 +24,7 @@ const { requireAuth } = require('../middleware/authMiddleware');
   router.delete("/users/", users.deleteAll);
 
   router.post("/blog/", blog.create);
-  //finde by email
+  //finde by parentdevice
   router.get("/findbyparentdeviceid/:parentdeviceid", blog.findbyparentdeviceid);
   // Retrieve all Tutorials
   router.get("/blog/", blog.findAll);
@@ -62,6 +62,7 @@ const { requireAuth } = require('../middleware/authMiddleware');
   router.get("/booking/", booking.findAll);
   // Retrieve all published Tutorials
   router.get("/published", booking.findAllPublished);
+  router.get("/findbyblogid/:blogid", booking.findbyblogid);
   // Retrieve a single Tutorial with id
   router.get("/booking/:id", booking.findOne);
   // Update a Tutorial with id

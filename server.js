@@ -1,10 +1,7 @@
 const express = require("express");
-const port = process.env.PORT || 4001;
 const bodyParser = require("body-parser");
 const cors = require("cors");
-var http = require('http');
 const cookieParser = require('cookie-parser');
-const socketIo = require("socket.io");
 const app = express();
 var https = require('https');
 var fs = require('fs');
@@ -95,31 +92,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-const server = http.createServer(app);
-const io = socketIo(server);
-
-let interval;
-
-io.on("connection", (socket) => {
-  console.log("New client connected");
-  if (interval) {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-    clearInterval(interval);
-  });
-});
-
-const getApiAndEmit = socket => {
-  const response = new Date();
-  // Emitting a new message. Will be consumed by the client
-  socket.emit("FromAPI", response);
-};
-
 require("./app/routes/turorial.routes")(app);
-server.listen(port, () => console.log(`Listening on port ${port}`));
+
 // set port, listen for requests
 const PORT = process.env.PORT || 1234;
 app.listen(PORT, () => {

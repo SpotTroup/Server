@@ -85,7 +85,37 @@ exports.findbyemail = (req, res) => {
 
 };
 
+exports.findbyblogid = (req, res) => {
+  const blogid = req.params.blogid;
+ Booking.find({ blogid: blogid })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving bookings."
+      });
+    });
 
+
+};
+
+exports.findbyuserid = (req, res) => {
+  const userid = req.params.userid;
+ Booking.find({ userid: userid })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving bookings."
+      });
+    });
+
+
+};
 // Update a Booking by the id in the request
 exports.update = (req, res) => {
   if (!req.body) {

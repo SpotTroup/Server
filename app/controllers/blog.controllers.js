@@ -67,8 +67,8 @@ exports.findOne = (req, res) => {
 };
 // findby email
 exports.findbyavailable = (req, res) => {
-  const available = req.params.available;
- Blog.find({ email: available })
+  
+ Blog.find({  available : true })
     .then(data => {
       res.send(data);
     })
@@ -99,6 +99,21 @@ exports.findbyparentdeviceid = (req, res) => {
 
 };
 
+exports.findbyuserid = (req, res) => {
+  const userid = req.params.userid;
+ Blog.find({ userid: userid })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+
+
+};
 
 // Update a Blog by the id in the request
 exports.update = (req, res) => {
